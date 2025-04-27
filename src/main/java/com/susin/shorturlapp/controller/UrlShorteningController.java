@@ -9,11 +9,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.susin.shorturlapp.model.UrlRecord;
+import com.susin.shorturlapp.model.UrlRequest;
 import com.susin.shorturlapp.service.UrlShortService;
 
 @RestController
@@ -32,9 +34,9 @@ public class UrlShorteningController {
      * @param longUrl the original long URL
      * @return the shortened URL
      */
-    @PostMapping("shorten")
-	public ResponseEntity<String>  createShortUrl(@RequestParam String longUrl){
-		return new ResponseEntity<>(urlShortService.createShortUrl(longUrl),HttpStatus.CREATED);
+    @PostMapping("createShortUrl")
+	public ResponseEntity<String>  createShortUrl(@RequestBody UrlRequest urlRequest){
+		return new ResponseEntity<>(urlShortService.createShortUrl(urlRequest.getLongUrl()),HttpStatus.CREATED);
 	
 	}
     

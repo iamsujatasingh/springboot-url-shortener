@@ -26,6 +26,7 @@ springboot-url-shortener/
 │   │   └── UrlShortRepository.java
 │   ├── model/
 │   │   └── UrlRecord.java
+│   │   └── UrlRequest.java
 │   └── service/
 │       └── UrlShortService.java
 ├── src/main/resources/
@@ -38,10 +39,27 @@ springboot-url-shortener/
 
 | Method | URL | Description |
 |:------|:----|:------------|
-| `POST` | `/url/createShortUrl?longUrl={longUrl}` | Create a short URL |
-| `GET` | `/url/fetchLongUrl?shortUrl={shortUrl}` | Redirect to original URL |
+| `POST` | `/api/createShortUrl` | Create a short URL for the provided long URL |
+| `GET` | `/api/fetchLongUrl?shortUrl={shortUrl}` | Redirect to the original long URL |
 ## 📋 API Usage
 
+## 💾 URLRequest POJO Class
+
+The `UrlRequest` POJO class handles the **long URL** input from the user.
+
+```java
+public class UrlRequest {
+    private String longUrl;
+
+    // Getter and Setter
+    public String getLongUrl() {
+        return longUrl;
+    }
+
+    public void setLongUrl(String longUrl) {
+        this.longUrl = longUrl;
+    }
+}
 ### Create Short URL
 
 ```bash
