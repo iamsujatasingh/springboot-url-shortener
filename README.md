@@ -15,13 +15,31 @@ This is a simple Spring Boot application that generates short URLs for long link
 - Spring Data JPA
 - H2 Database
 
+## 📁 Project Structure
+
+```plaintext
+springboot-url-shortener/
+├── src/main/java/com/susin/shorturlapp/
+│   ├── controller/
+│   │   └── UrlShorteningController.java
+│   ├── dao/
+│   │   └── UrlShortRepository.java
+│   ├── model/
+│   │   └── UrlRecord.java
+│   └── service/
+│       └── UrlShortService.java
+├── src/main/resources/
+│   ├── application.properties
+├── .gitignore
+├── README.md
+├── pom.xml
+
 ## ⚙️ Endpoints
 
 | Method | URL | Description |
 |:------|:----|:------------|
-| `POST` | `/url/create` | Create a short URL from a long URL |
-| `GET` | `/url/fetch/{shortUrl}` | Fetch original long URL from short URL |
-
+| `POST` | `/url/createShortUrl?longUrl={longUrl}` | Create a short URL |
+| `GET` | `/url/fetchLongUrl?shortUrl={shortUrl}` | Redirect to original URL |
 ## 📋 API Usage
 
 ### Create Short URL
